@@ -1,21 +1,11 @@
-helloe we hit single
+This is the 201 Street source enjoy
 
-Havee fun with NightmareVision V1! (***[follow me on twitter](https://twitter.com/DuskieWhy)***)
+theres some issues on low end computers but lowk we tried our best this was supposed to come out on halloween originally
+and theres not gonna be a patch atm so sorry !
 
-![](https://github.com/DuskieWhy/NightmareVision/blob/V1/assets/game/images/branding/NMV.png)
+Runs on Nightmare Vision (dev branch)
 
-## Special thanks to...
-
-* ShadowMario and Co. for [Psych engine](https://github.com/ShadowMario/FNF-PsychEngine)
-
-* Nebula_Zorua for the [specific Psych fork](https://github.com/nebulazorua/exe-psych-fork) NMV is built off and for the Modchart backend
-
-* Rozebud for the chart editor little buddies ([Check out their engine too](https://github.com/ThatRozebudDude/FPS-Plus-Public))
-
-* Cne crew for camera rotation support ([Check out codename engine](https://github.com/CodenameCrew/CodenameEngine))
-
-* MaybeMaru for [MoonChart](https://github.com/MaybeMaru/moonchart) and [Flixel-Animate](https://github.com/MaybeMaru/flixel-animate)
-
+Original Nightmare Vision Source: https://github.com/DuskieWhy/NightmareVision
 
 ## How to compile NMV Engine
 
