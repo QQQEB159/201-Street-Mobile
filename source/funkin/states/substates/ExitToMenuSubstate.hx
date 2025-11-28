@@ -80,7 +80,7 @@ class ExitToMenuSubstate extends MusicBeatSubstate
 			yes.alpha = 1;
 			yes.scale.set(1, 1);
 
-			if (FlxG.mouse.justPressed)
+			if (FlxG.mouse.justReleased)
 			{
 				FlxG.switchState(TitleState201.new);
 			}
@@ -98,7 +98,7 @@ class ExitToMenuSubstate extends MusicBeatSubstate
 			no.alpha = 1;
 			no.scale.set(1, 1);
 
-			if (FlxG.mouse.justPressed)
+			if (FlxG.mouse.justReleased)
 			{
 				close();
 			}

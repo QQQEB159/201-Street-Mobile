@@ -341,7 +341,7 @@ class TitleState201 extends MusicBeatState
 							i.alpha = i.ID == curSelectedDiff ? 1 : 0.5;
 						}
 
-						if (FlxG.mouse.justPressed || controls.ACCEPT)
+						if (FlxG.mouse.justReleased || controls.ACCEPT)
 						{
 							isNewGame = false;
 							FlxTween.tween(camFollow, {y: 0 - FlxG.height / 2}, 3, {ease: FlxEase.quadInOut});
@@ -427,7 +427,7 @@ class TitleState201 extends MusicBeatState
 								i.alpha = 0.5;
 								if (i.ID == 1 && !overworldData) i.alpha = 0.25;
 								if (i.ID == 2 && !beatenGame) i.alpha = 0.25;
-								if (FlxG.mouse.overlaps(i) && FlxG.mouse.justPressed)
+								if (FlxG.mouse.overlaps(i) && FlxG.mouse.justReleased)
 								{
 									curSelected = i.ID;
 								}
@@ -450,7 +450,7 @@ class TitleState201 extends MusicBeatState
 									i.alpha = 1;
 									if (FlxG.mouse.overlaps(i)) FlxG.mouse.load(Paths.image("overworld/ui/cursor/click").bitmap, 0.325);
 
-									if ((FlxG.mouse.justPressed || controls.ACCEPT))
+									if ((FlxG.mouse.justReleased || controls.ACCEPT))
 									{
 										FlxG.mouse.load(Paths.image("overworld/ui/cursor/click").bitmap, 0.325);
 										selectOption(curSelected);
@@ -491,7 +491,7 @@ class TitleState201 extends MusicBeatState
 		{
 			if (poster.alpha == 1)
 			{
-				if (controls.ACCEPT || FlxG.mouse.justPressed || FlxG.keys.justPressed.ENTER)
+				if (controls.ACCEPT || FlxG.mouse.justReleased || FlxG.keys.justPressed.ENTER)
 				{
 					FlxTween.tween(poster, {alpha: 0, y: poster.y + 30}, 0.5, {ease: FlxEase.quartOut});
 					dialogue_box.loadDialogue('intro_dialogue_cont', true);

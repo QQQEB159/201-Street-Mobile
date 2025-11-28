@@ -124,6 +124,9 @@ class OptionsSubstate extends MusicBeatSubstate
 		changeSelection();
 		ClientPrefs.flush();
 		camera = CameraUtil.lastCamera;
+		
+		addTouchPad("LEFT_FULL", "A_B_C");
+		addTouchPadCamera();
 	}
 
 	override function closeSubState()
@@ -158,7 +161,7 @@ class OptionsSubstate extends MusicBeatSubstate
 			}
 		}
 
-		for (item in grpOptions.members)
+		/*for (item in grpOptions.members)
 		{
 			if (FlxG.mouse.overlaps(item, OverworldState.instance.camHUD))
 			{
@@ -169,7 +172,7 @@ class OptionsSubstate extends MusicBeatSubstate
 					return;
 				}
 			}
-		}
+		}*/
 		if (controls.UI_UP_P)
 		{
 			changeSelection(-1);

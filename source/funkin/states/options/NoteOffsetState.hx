@@ -104,6 +104,9 @@ class NoteOffsetState extends MusicBeatState
 		Conductor.bpm = 128.0;
 		FunkinSound.playMusic(Paths.music('offsetSong'), 1, true);
 
+		addTouchPad("LEFT_RIGHT", "A_B_C");
+		addTouchPadCamera();
+		
 		super.create();
 	}
 
@@ -142,7 +145,7 @@ class NoteOffsetState extends MusicBeatState
 			updateNoteDelay();
 		}
 
-		if (controls.RESET)
+		if (controls.RESET || touchPad.buttonC.justPressed)
 		{
 			holdTime = 0;
 			barPercent = 0;
@@ -208,6 +211,8 @@ class NoteOffsetState extends MusicBeatState
 		lastBeatHit = curBeat;
 	}
 
+	final buttonAccept:String = controls.mobileC ? 'A' : 'Accept';
+	
 	function updateNoteDelay()
 	{
 		ClientPrefs.noteOffset = Math.round(barPercent);

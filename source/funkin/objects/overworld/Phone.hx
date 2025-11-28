@@ -430,7 +430,7 @@ class Phone extends FlxTypedSpriteGroup<FlxSprite>
 		if (FlxG.mouse.overlaps(backButton, OverworldState.instance.camHUD) && canSelectOnPhone)
 		{
 			backButton.shader = selected_shader;
-			if (FlxG.mouse.justPressed)
+			if (FlxG.mouse.justReleased)
 			{
 				inApp ? closeApp() : closePhone();
 				return;
@@ -471,7 +471,7 @@ class Phone extends FlxTypedSpriteGroup<FlxSprite>
 			app_text.text = options[curSelected].toUpperCase();
 			app_text.x = phone_screen.x + (phone_screen.width / 2) - (app_text.width / 2);
 
-			if (controls.ACCEPT || FlxG.mouse.justPressed && hoveringOnApp)
+			if (controls.ACCEPT || FlxG.mouse.justReleased && hoveringOnApp)
 			{
 				curApp = options[curSelected];
 				switch (curApp)
@@ -622,7 +622,7 @@ class Phone extends FlxTypedSpriteGroup<FlxSprite>
 					case 'photos':
 						if (controls.UI_LEFT_P
 							|| FlxG.mouse.overlaps(freeplay_left_arrow, OverworldState.instance.camHUD)
-							&& FlxG.mouse.justPressed)
+							&& FlxG.mouse.justReleased)
 						{
 							curFreeplay--;
 							FlxTween.cancelTweensOf(freeplay_left_arrow);
@@ -631,7 +631,7 @@ class Phone extends FlxTypedSpriteGroup<FlxSprite>
 						}
 						if (controls.UI_RIGHT_P
 							|| FlxG.mouse.overlaps(freeplay_right_arrow, OverworldState.instance.camHUD)
-							&& FlxG.mouse.justPressed)
+							&& FlxG.mouse.justReleased)
 						{
 							curFreeplay++;
 							FlxTween.cancelTweensOf(freeplay_right_arrow);
@@ -643,7 +643,7 @@ class Phone extends FlxTypedSpriteGroup<FlxSprite>
 
 						if ((controls.ACCEPT
 							|| FlxG.mouse.overlaps(freeplay_portrait, OverworldState.instance.camHUD)
-							&& FlxG.mouse.justPressed)
+							&& FlxG.mouse.justReleased)
 							&& freeplay_songs[curFreeplay][1] == true)
 						{
 							canSelectOnPhone = false;
@@ -662,7 +662,7 @@ class Phone extends FlxTypedSpriteGroup<FlxSprite>
 							|| controls.UI_LEFT_P
 							|| (FlxG.mouse.overlaps(freeplay_right_arrow, OverworldState.instance.camHUD)
 								|| FlxG.mouse.overlaps(freeplay_left_arrow, OverworldState.instance.camHUD))
-							&& FlxG.mouse.justPressed)
+							&& FlxG.mouse.justReleased)
 						{
 							changeFreeplay();
 						}
@@ -691,7 +691,7 @@ class Phone extends FlxTypedSpriteGroup<FlxSprite>
 						}
 
 						contacts_check.y = contacts_list[curContact].y;
-						if (controls.ACCEPT || FlxG.mouse.justPressed)
+						if (controls.ACCEPT || FlxG.mouse.justReleased)
 						{
 							closeApp();
 							closePhone(false);
@@ -712,7 +712,7 @@ class Phone extends FlxTypedSpriteGroup<FlxSprite>
 
 				var mouse_overlapping:Bool = false;
 
-				if (controls.ACCEPT || (FlxG.mouse.justPressed && mouse_overlapping))
+				if (controls.ACCEPT || (FlxG.mouse.justReleased && mouse_overlapping))
 				{
 					switch (curExit)
 					{

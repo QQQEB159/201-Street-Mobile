@@ -213,7 +213,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	function reloadDialoguePortrait(?change_char:Bool = false)
 	{
 		FlxTween.cancelTweensOf(dialogue_portrait);
-		if (sys.FileSystem.exists('assets/images/overworld/portraits/'
+		if (sys.FileSystem.exists(#if mobile Sys.getCwd() + #end 'assets/images/overworld/portraits/'
 			+ curDialogue[curDialoguePos].character.toLowerCase() + '/' + curDialogue[curDialoguePos].expression.toLowerCase() + '.png'))
 		{
 			dialogue_portrait.alpha = 1;
@@ -266,9 +266,9 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 		var talk_sound_directory:String = '201-street/talk_sounds/' + curDialogue[curDialoguePos].character.toLowerCase();
 		talk_sound_directory = talk_sound_directory.replace(' ', '-');
-		if (sys.FileSystem.exists('assets/sounds/$talk_sound_directory.ogg'))
+		if (sys.FileSystem.exists(#if mobile Sys.getCwd() + #end 'assets/sounds/$talk_sound_directory.ogg'))
 		{
-			if (sys.FileSystem.exists('assets/sounds/$talk_sound_directory' + '-$character_vocal_expression' + '.ogg'))
+			if (sys.FileSystem.exists(#if mobile Sys.getCwd() + #end 'assets/sounds/$talk_sound_directory' + '-$character_vocal_expression' + '.ogg'))
 			{
 				talk_sound_directory += '-$character_vocal_expression';
 			}

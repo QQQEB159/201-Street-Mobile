@@ -30,11 +30,9 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.onChange = onChangeAntiAliasing; // Changing onChange is only needed if you want to make a special interaction after it changes the value
 		addOption(option);
 
-		#if !mobile
 		var option:Option = new Option('FPS Counter', 'Shows FPS counter', 'showFPS', 'bool', true);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
-		#end
 
 		var option:Option = new Option('Framerate', "Framerate", 'framerate', 'int', 60);
 		addOption(option);
@@ -74,10 +72,8 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		}
 	}
 
-	#if !mobile
 	function onChangeFPSCounter()
 	{
 		if (DebugDisplay.instance != null) DebugDisplay.instance.visible = ClientPrefs.showFPS;
 	}
-	#end
 }

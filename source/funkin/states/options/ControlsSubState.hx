@@ -122,6 +122,9 @@ class ControlsSubState extends MusicBeatSubstate
 		add(mouseObject);
 
 		camera = CameraUtil.lastCamera;
+		
+		addTouchPad("LEFT_FULL", "B");
+		addTouchPadCamera();
 	}
 
 	var leaving:Bool = false;

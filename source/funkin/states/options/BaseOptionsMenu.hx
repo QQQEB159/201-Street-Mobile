@@ -132,6 +132,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		scriptGroup.call('onCreatePost', []);
 
 		camera = CameraUtil.lastCamera;
+		
+		addTouchPad("LEFT_FULL", "A_B_C");
+		addTouchPadCamera();
 	}
 
 	public function addOption(option:Option)
@@ -149,7 +152,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		mouseObject.setPosition(FlxG.mouse.getScreenPosition().x, FlxG.mouse.getScreenPosition().y);
 		var accepted:Bool = controls.ACCEPT;
 		var isOverlapped:Bool = false;
-		for (item in grpOptions.members)
+		/*for (item in grpOptions.members)
 		{
 			if (mouseObject.overlaps(item))
 			{
@@ -164,7 +167,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					}
 				}
 			}
-		}
+		}*/
 		if (mouseObject.overlaps(backButton))
 		{
 			isOverlapped = true;
@@ -297,7 +300,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				}
 			}
 
-			if (controls.RESET)
+			if (controls.RESET || touchPad.buttonC.justPressed)
 			{
 				for (i in 0...optionsArray.length)
 				{

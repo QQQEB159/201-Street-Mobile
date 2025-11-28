@@ -41,6 +41,9 @@ class PopupSubstate extends MusicBeatSubstate
 
 		FlxTimer.wait(0.5, onComp);
 		camera = cam;
+		
+		addTouchPad("NONE", "A");
+		addTouchPadCamera();
 	}
 
 	function onComp()

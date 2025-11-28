@@ -276,7 +276,7 @@ class OverworldUI extends FlxTypedSpriteGroup<FlxSprite>
 			phone.y = FlxMath.lerp(phone.y, 250, FlxMath.bound(elapsed * 6, 0, 1));
 			notif.y = phone.y;
 
-			if (FlxG.mouse.justPressed)
+			if (FlxG.mouse.justReleased)
 			{
 				OverworldState.instance.canMove = false;
 				FlxTween.tween(black_bg, {alpha: 0.5}, 0.75, {ease: FlxEase.quartOut});
