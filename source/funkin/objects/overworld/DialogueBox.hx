@@ -213,7 +213,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	function reloadDialoguePortrait(?change_char:Bool = false)
 	{
 		FlxTween.cancelTweensOf(dialogue_portrait);
-		if (sys.FileSystem.exists(#if mobile Sys.getCwd() + #end 'assets/images/overworld/portraits/'
+		if (sys.FileSystem.exists(#if mobile StorageUtil.getStorageDirectory(true) + #end 'assets/images/overworld/portraits/'
 			+ curDialogue[curDialoguePos].character.toLowerCase() + '/' + curDialogue[curDialoguePos].expression.toLowerCase() + '.png'))
 		{
 			dialogue_portrait.alpha = 1;

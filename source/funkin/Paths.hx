@@ -289,7 +289,7 @@ class Paths
 	#if MODS_ALLOWED
 	public static inline function mods(key:String = ''):String
 	{
-		return #if mobile Sys.getCwd() + #end '$MODS_DIRECTORY/' + key;
+		return #if mobile StorageUtil.getStorageDirectory(true) + #end '$MODS_DIRECTORY/' + key;
 	}
 	
 	static public function modFolders(key:String):String
@@ -308,7 +308,7 @@ class Paths
 			final fileToCheck:String = mods(mod + '/' + key);
 			if (FileSystem.exists(fileToCheck)) return fileToCheck;
 		}
-		return #if mobile Sys.getCwd() + #end '$MODS_DIRECTORY/$key';
+		return #if mobile StorageUtil.getStorageDirectory(true) + #end '$MODS_DIRECTORY/$key';
 	}
 	#end
 }
