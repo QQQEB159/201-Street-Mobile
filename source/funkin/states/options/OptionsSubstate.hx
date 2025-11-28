@@ -89,7 +89,9 @@ class OptionsSubstate extends MusicBeatSubstate
 	{
 		super();
 		FlxTimer.wait(0.2, onBack);
+		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Options Menu");
+		#end
 
 		mouseObject = new FlxObject(0, 0, 5, 5);
 		add(mouseObject);

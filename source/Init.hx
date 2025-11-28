@@ -42,6 +42,8 @@ class Init extends FlxState
 		ClientPrefs.load();
 
 		funkin.data.Highscore.load();
+		
+		mobile.MobileData.init();
 
 		FlxSprite.defaultAntialiasing = ClientPrefs.globalAntialiasing;
 
@@ -86,7 +88,9 @@ class Init extends FlxState
 		funkin.utils.WindowUtil.initTracy();
 		#end
 
+		#if DISCORD_ALLOWED
 		DiscordClient.init();
+		#end
 
 		funkin.scripting.PluginsManager.prepareSignals();
 		funkin.scripting.PluginsManager.populate();

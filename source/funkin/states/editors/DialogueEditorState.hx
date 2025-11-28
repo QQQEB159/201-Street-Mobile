@@ -274,7 +274,9 @@ class DialogueEditorState extends MusicBeatState
 		var rpcText:String = lineInputText.text;
 		if (rpcText == null || rpcText.length < 1) rpcText = '(Empty)';
 		if (rpcText.length < 3) rpcText += '  '; // Fixes a bug on RPC that triggers an error when the text is too short
+		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Dialogue Editor", rpcText);
+		#end
 	}
 	
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)

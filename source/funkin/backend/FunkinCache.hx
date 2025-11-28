@@ -91,7 +91,9 @@ class FunkinCache
 		
 		openfl.system.System.gc();
 		#if cpp
-		cpp.vm.Gc.compact();
+		cpp.NativeGc.run(true);
+		#elseif hl
+		hl.Gc.major();
 		#end
 	}
 	

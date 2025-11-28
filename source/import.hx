@@ -1,6 +1,9 @@
 #if !macro
 import haxe.io.Path;
 
+//mobile
+import mobile.StorageUtil;
+
 // flixel
 import flixel.FlxG;
 import flixel.FlxSprite;
