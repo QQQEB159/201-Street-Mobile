@@ -14,7 +14,6 @@ import openfl.Assets;
 /**
  * backend for retrieving and caching assets
  */
-@:nullSafety(Strict)
 class FunkinAssets
 {
 	/**
