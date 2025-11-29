@@ -33,6 +33,7 @@ import hxvlc.flixel.*;
 import Init;
 
 import funkin.Paths;
+import funkin.FunkinAssets;
 import funkin.data.ClientPrefs;
 import funkin.backend.Conductor;
 import funkin.utils.CoolUtil;

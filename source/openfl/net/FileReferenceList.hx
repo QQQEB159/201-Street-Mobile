@@ -135,7 +135,7 @@ class FileReferenceList extends EventDispatcher
 	**/
 	public function browse(typeFilter:Array<FileFilter> = null):Bool
 	{
-		#if (desktop || mobile)
+		#if desktop
 		var filter:String = null;
 
 		if (typeFilter != null)
