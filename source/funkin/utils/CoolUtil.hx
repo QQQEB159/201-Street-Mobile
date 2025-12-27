@@ -51,7 +51,16 @@ class CoolUtil
 		
 		return daList;
 	}
-	
+	public static function colorFromString(color:String):FlxColor
+	{
+		var hideChars = ~/[\t\n\r]/;
+		var color:String = hideChars.split(color).join('').trim();
+		if(color.startsWith('0x')) color = color.substring(color.length - 6);
+
+		var colorNum:Null<FlxColor> = FlxColor.fromString(color);
+		if(colorNum == null) colorNum = FlxColor.fromString('#$color');
+		return colorNum != null ? colorNum : FlxColor.WHITE;
+	}
 	public static function listFromString(string:String):Array<String>
 	{
 		var daList:Array<String> = [];
@@ -272,5 +281,14 @@ class CoolUtil
 			@:nullSafety(Off)
 			FlxG.sound.music.fadeTween = null;
 		}
+	}
+	
+	public static function showPopUp(message:String, title:String):Void
+	{
+		/*#if android
+		android.Tools.showAlertDialog(title, message, {name: "OK", func: null}, null);
+		#else*/
+		FlxG.stage.window.alert(message, title);
+		//#end
 	}
 }

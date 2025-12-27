@@ -7,6 +7,9 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.input.keyboard.FlxKey;
 import funkin.backend.DebugDisplay;
+#if mobile
+import mobile.CopyState;
+#end
 
 @:nullSafety(Strict)
 class Main extends Sprite
@@ -33,10 +36,22 @@ class Main extends Sprite
 	public static function main():Void
 	{
 		Lib.current.addChild(new Main());
+		#if cpp
+		cpp.NativeGc.enable(true);
+		#elseif hl
+		hl.Gc.enable(true);
+		#end
 	}
 
 	public function new()
 	{
+		#if mobile
+		#if android
+		StorageUtil.requestPermissions();
+		#end
+		Sys.setCwd(StorageUtil.getStorageDirectory());
+		#end
+		
 		super();
 
 		#if (CRASH_HANDLER && !debug)
@@ -54,7 +69,7 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
 
-		final game = new FlxGame(startMeta.width, startMeta.height, Init, startMeta.fps, startMeta.fps, true, startMeta.startFullScreen);
+		final game = new FlxGame(startMeta.width, startMeta.height, #if (mobile && MODS_ALLOWED) !CopyState.checkExistingFiles() ? CopyState : #end Init, startMeta.fps, startMeta.fps, true, startMeta.startFullScreen);
 
 		// btw game has to be a variable for this to work ig - Orbyy
 		@:privateAccess
@@ -65,6 +80,13 @@ class Main extends Sprite
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) -> {
 			if (e.keyCode == FlxKey.ENTER && e.altKey) e.stopImmediatePropagation();
 		}, false, 100);
+		
+		#if mobile
+		lime.system.System.allowScreenTimeout = ClientPrefs.screensaver;
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK]; 
+		#end
+		#end
 
 		DebugDisplay.init();
 
@@ -75,11 +97,19 @@ class Main extends Sprite
 		#end
 	}
 
+	@:access(funkin.backend.DebugDisplay)
 	@:access(flixel.FlxCamera)
 	static function onResize(w:Int, h:Int)
 	{
 		final scale:Float = Math.max(1, Math.min(w / FlxG.width, h / FlxG.height));
 
+		if(DebugDisplay.instance != null) 
+		{
+		    #if mobile
+		    DebugDisplay.instance.positionFPS(10, 3, Math.min(w / FlxG.width, h / FlxG.height));
+		    #end
+		}
+		
 		if (FlxG.cameras != null)
 		{
 			for (i in FlxG.cameras.list)
