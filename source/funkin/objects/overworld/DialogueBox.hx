@@ -238,7 +238,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			if (dialogue_portrait != null)
 			{
 				dialogue_portrait.loadGraphic(Paths.image('overworld/portraits/'
-					+ curDialogue[curDialoguePos].character.toLowerCase() + '/' + curDialogue[curDialoguePos].expression.toLowerCase()));
+					+ curDialogue[curDialoguePos].character + '/' + curDialogue[curDialoguePos].expression));
 			}
 
 			dialogue_portrait.setPosition(890 - dialogue_portrait.width / 2 + portraitOffset[0], 70 + portraitOffset[1]);
