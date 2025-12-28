@@ -18,7 +18,7 @@ class OptionsState extends MusicBeatState
 	public static var onPlayState:Bool = false;
 	public static var onPhone:Bool = false;
 
-	var options:Array<String> = ['Controls', 'Adjust Delay', 'Graphics and Visuals', 'Gameplay'];
+	var options:Array<String> = ['Controls', 'Adjust Delay', 'Graphics and Visuals', 'Gameplay', 'Mobile Options'];
 	private var grpOptions:FlxTypedGroup<FlxText>;
 
 	var sky:FlxSprite;
@@ -38,6 +38,9 @@ class OptionsState extends MusicBeatState
 			item.alpha = 0;
 		}
         backButton.alpha = 0;
+        if (label != "Adjust Delay"){
+            removeTouchPad();
+        }
 		switch (label)
 		{
 			case 'Controls':
@@ -51,6 +54,8 @@ class OptionsState extends MusicBeatState
 			case 'Adjust Delay':
 				FlxG.switchState(funkin.states.options.NoteOffsetState.new);
 				NoteOffsetState.onPhone = onPhone;
+			case 'Mobile Options':
+				openSubState(new mobile.options.MobileOptionsSubState());
 		}
 	}
 
@@ -107,6 +112,8 @@ class OptionsState extends MusicBeatState
 			changeSelection();
 			backButton = new FlxSprite(10, 10).loadGraphic(Paths.image("overworld/ui/phoneui/backminimenu"));
 			add(backButton);
+			
+			addTouchPad("UP_DOWN", "A_B");
 		}
 		ClientPrefs.flush();
 
@@ -142,6 +149,8 @@ class OptionsState extends MusicBeatState
 		}
 		scriptGroup.call('onCloseSubState', []);
 		super.closeSubState();
+		removeTouchPad();
+		addTouchPad("UP_DOWN", "A_B");
 		ClientPrefs.flush();
 	}
 

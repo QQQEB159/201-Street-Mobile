@@ -113,6 +113,9 @@ class GameOverSubstate extends MusicBeatSubstate
 			startedDeath = true;
 		});
 
+		addTouchPad("NONE", "A_B");
+		addTouchPadCamera();
+		
 		super.create();
 
 		PlayState.instance?.scripts.call('onGameOverPost', []);

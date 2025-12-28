@@ -54,6 +54,8 @@ class CreditsState extends MusicBeatState
 		video.load(Paths.video('credits'));
 		add(video);
 
+		addTouchPad("LEFT_RIGHT", "B_S");
+		
 		super.create();
 	}
 
@@ -74,7 +76,7 @@ class CreditsState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(TitleState201.new);
 			}
-			if (FlxG.keys.justPressed.SPACE)
+			if (FlxG.keys.justPressed.SPACE || touchPad.buttonS.justPressed)
 			{
 				inVideo = true;
 				uiImage.visible = false;

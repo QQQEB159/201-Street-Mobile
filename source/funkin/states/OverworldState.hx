@@ -245,6 +245,9 @@ class OverworldState extends MusicBeatState
 			}
 		}
 
+		addTouchPad("LEFT_FULL", "S");
+		addTouchPadCamera();
+		
 		callScriptFunc('onCreatePost');
 	}
 
@@ -363,7 +366,7 @@ class OverworldState extends MusicBeatState
 	{
 		if (!canMove) return;
 
-		if (FlxG.keys.pressed.SHIFT && mapData.can_run)
+		if ((FlxG.keys.pressed.SHIFT || touchPad.buttonS.pressed) && mapData.can_run)
 		{
 			defaultCamZoom = map_zoom + 0.1;
 			camera_movement_amt = 11;
@@ -675,6 +678,7 @@ class OverworldState extends MusicBeatState
 	{
 		canMove = false;
 		curMusic = '';
+		FlxG.mouse.visible = false;
 
 		PlayState.storyMeta.difficulty = FlxG.save.data.story_difficulty;
 

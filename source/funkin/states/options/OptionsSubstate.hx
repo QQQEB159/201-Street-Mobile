@@ -33,6 +33,7 @@ class OptionsSubstate extends MusicBeatSubstate
 		'Difficulty',
 		'Graphics and Visuals',
 		'Gameplay',
+		'Mobile Options',
 		"Close"
 	];
 	private var grpOptions:FlxTypedGroup<FlxText>;
@@ -65,18 +66,24 @@ class OptionsSubstate extends MusicBeatSubstate
 				}
 			case 'Controls':
 				openSubState(new funkin.states.options.ControlsSubState());
+				removeTouchPad();
 			case 'Graphics and Visuals':
 				openSubState(new funkin.states.options.GraphicsSettingsSubState());
+				removeTouchPad();
 			case 'Gameplay':
 				openSubState(new funkin.states.options.GameplaySettingsSubState());
+				removeTouchPad();
 			case 'Misc':
 				openSubState(new funkin.states.options.MiscSubState());
+				removeTouchPad();
 			case 'Adjust Delay':
 				FlxG.switchState(funkin.states.options.NoteOffsetState.new);
 				NoteOffsetState.onPhone = true;
 			case 'Close':
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				close();
+			case 'Mobile Options':
+				openSubState(new mobile.options.MobileOptionsSubState());
 		}
 	}
 
@@ -124,6 +131,9 @@ class OptionsSubstate extends MusicBeatSubstate
 		changeSelection();
 		ClientPrefs.flush();
 		camera = CameraUtil.lastCamera;
+		
+		addTouchPad("UP_DOWN", "A_B");
+		addTouchPadCamera();
 	}
 
 	override function closeSubState()
@@ -135,6 +145,9 @@ class OptionsSubstate extends MusicBeatSubstate
 		}
 		trace('plap plap plap!');
 		super.closeSubState();
+		removeTouchPad();
+		addTouchPad("UP_DOWN", "A_B");
+		addTouchPadCamera();
 		ClientPrefs.flush();
 	}
 
@@ -170,22 +183,22 @@ class OptionsSubstate extends MusicBeatSubstate
 				}
 			}
 		}
-		if (controls.UI_UP_P)
+		if (controls.UI_UP_P || touchPad.buttonUp.justPressed)
 		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P)
+		if (controls.UI_DOWN_P || touchPad.buttonDown.justPressed)
 		{
 			changeSelection(1);
 		}
 
-		if (controls.BACK)
+		if (controls.BACK || touchPad.buttonB.justPressed)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			close();
 		}
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT || touchPad.buttonA.justPressed)
 		{
 			openSelectedSubstate(options[curSelected]);
 		}

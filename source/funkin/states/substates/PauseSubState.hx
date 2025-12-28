@@ -202,6 +202,9 @@ class PauseSubState extends MusicBeatSubstate
 			introTweens(25.0);
 		}
 
+		addTouchPad("UP_DOWN", "A");
+		addTouchPadCamera();
+		
 		super.create();
 
 		scriptGroup.call('onCreatePost', []);
