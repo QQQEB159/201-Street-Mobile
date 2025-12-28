@@ -152,7 +152,7 @@ function onCreatePost()
 
 	camHUD.alpha = 0;
 
-	void.shader = void_shader;
+	if (ClientPrefs.shaders) void.shader = void_shader;
 
 	lighting = newShader('adjustColor');
 	lighting.setFloat('hue', -5);
@@ -160,7 +160,7 @@ function onCreatePost()
 	lighting.setFloat('contrast', 10);
 	lighting.setFloat('saturation', -25);
 
-	camGame.filters = [new ShaderFilter(lighting)];
+	if (ClientPrefs.shaders) camGame.filters = [new ShaderFilter(lighting)];
 
 	cutscene_video = new FunkinVideoSprite();
 	cutscene_video.onFormat(() -> {
@@ -366,7 +366,7 @@ function onEvent(eventName, value1, value2)
 						frankieRim.setAdjustColor(-25, -38, -25, -20);
 						frankieRim.color = 0xFFFFFF;
 						frankieRim.angle = 90;
-						item.shader = frankieRim;
+						if (ClientPrefs.shaders) item.shader = frankieRim;
 						frankieRim.attachedSprite = item;
 						item.animation.onFrameChange.add(function() {
 							frankieRim.updateFrameInfo(item.frame);
@@ -382,7 +382,7 @@ function onEvent(eventName, value1, value2)
 					speakerRim.setAdjustColor(-25, -38, -25, -20);
 					speakerRim.color = 0xFFFFFF;
 					speakerRim.angle = 90;
-					speaker.shader = speakerRim;
+					if (ClientPrefs.shaders) speaker.shader = speakerRim;
 					speakerRim.attachedSprite = speaker;
 					speaker.animation.onFrameChange.add(function() {
 						speakerRim.updateFrameInfo(speaker.frame);
@@ -395,7 +395,7 @@ function onEvent(eventName, value1, value2)
 						characterRim.setAdjustColor(-25, -38, -25, -20);
 						characterRim.color = 0x00FFFFFF;
 						characterRim.threshold = 0.3;
-						item.shader = characterRim;
+						if (ClientPrefs.shaders) item.shader = characterRim;
 						characterRim.attachedSprite = item;
 						item.animation.onFrameChange.add(function() {
 							characterRim.updateFrameInfo(item.frame);
@@ -473,7 +473,7 @@ function onEvent(eventName, value1, value2)
 					scaryEndingSequence = false;
 					for (item in [boyfriend, duck, red_guy, yellow_guy_ending, duck_ending, red_guy_ending])
 						item.visible = !item.visible;
-					camGame.filters = [new ShaderFilter(lighting)];
+					if (ClientPrefs.shaders) camGame.filters = [new ShaderFilter(lighting)];
 					onEvent("DHMIS Events", "normal", "");
 					scaryBG.visible = false;
 					gf.visible = false;

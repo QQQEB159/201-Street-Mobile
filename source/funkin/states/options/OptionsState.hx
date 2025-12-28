@@ -183,7 +183,7 @@ class OptionsState extends MusicBeatState
 					isOverlapped = true;
 					if (FlxG.mouse.justPressed)
 					{
-						openSelectedSubstate(options[item.ID]);
+						//openSelectedSubstate(options[item.ID]);
 						return;
 					}
 				}

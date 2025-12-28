@@ -233,6 +233,10 @@ class WordleSubstate extends MusicBeatSubstate
 			spr.setGraphicSize(spr.width * 0.95);
 		});
 		camera = CameraUtil.lastCamera;
+		
+		addTouchPad("NONE", "B");
+		addTouchPadCamera();
+		
 		super.create();
 	}
 
@@ -287,7 +291,7 @@ class WordleSubstate extends MusicBeatSubstate
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		if (FlxG.keys.justPressed.ESCAPE && canBack) close();
+		if ((FlxG.keys.justPressed.ESCAPE || touchPad.buttonB.justPressed) && canBack) close();
 
 		if (canInput)
 		{

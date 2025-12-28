@@ -49,6 +49,7 @@ class MobileOptionsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Mobile Controls', 'Choose which control to play.', '', 'button', true);
 		option.callback = function() {
 		    openSubState(new mobile.MobileControlSelectSubState());
+		    touchPad.active = touchPad.visible = false;
 		}
 		addOption(option);
 		

@@ -66,16 +66,16 @@ class OptionsSubstate extends MusicBeatSubstate
 				}
 			case 'Controls':
 				openSubState(new funkin.states.options.ControlsSubState());
-				removeTouchPad();
+			    touchPad.active = touchPad.visible = false;
 			case 'Graphics and Visuals':
 				openSubState(new funkin.states.options.GraphicsSettingsSubState());
-				removeTouchPad();
+				touchPad.active = touchPad.visible = false;
 			case 'Gameplay':
 				openSubState(new funkin.states.options.GameplaySettingsSubState());
-				removeTouchPad();
+				touchPad.active = touchPad.visible = false;
 			case 'Misc':
 				openSubState(new funkin.states.options.MiscSubState());
-				removeTouchPad();
+				touchPad.active = touchPad.visible = false;
 			case 'Adjust Delay':
 				FlxG.switchState(funkin.states.options.NoteOffsetState.new);
 				NoteOffsetState.onPhone = true;
@@ -84,6 +84,7 @@ class OptionsSubstate extends MusicBeatSubstate
 				close();
 			case 'Mobile Options':
 				openSubState(new mobile.options.MobileOptionsSubState());
+				touchPad.active = touchPad.visible = false;
 		}
 	}
 
@@ -132,7 +133,7 @@ class OptionsSubstate extends MusicBeatSubstate
 		ClientPrefs.flush();
 		camera = CameraUtil.lastCamera;
 		
-		addTouchPad("UP_DOWN", "A_B");
+		addTouchPad("LEFT_FULL", "A_B");
 		addTouchPadCamera();
 	}
 
@@ -146,7 +147,7 @@ class OptionsSubstate extends MusicBeatSubstate
 		trace('plap plap plap!');
 		super.closeSubState();
 		removeTouchPad();
-		addTouchPad("UP_DOWN", "A_B");
+		addTouchPad("LEFT_FULL", "A_B");
 		addTouchPadCamera();
 		ClientPrefs.flush();
 	}
@@ -178,7 +179,7 @@ class OptionsSubstate extends MusicBeatSubstate
 				isOverlapped = true;
 				if (FlxG.mouse.justPressed)
 				{
-					openSelectedSubstate(options[item.ID]);
+					//openSelectedSubstate(options[item.ID]);
 					return;
 				}
 			}
