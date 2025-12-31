@@ -24,9 +24,16 @@ function onLoad()
 
 function onCreatePost()
 {
-	FlxG.scaleMode.width = 800;
-	FlxG.camera.width = 800;
-	game.camHUD.width = 800;
+	//FlxG.scaleMode.width = 800;
+	//FlxG.camera.width = 800;
+	//game.camHUD.width = 800;
+	FlxG.camera.x += 240;
+	game.camHUD.x += 240;
+	modManager.setValue("transformX", -490, 0);
+	mobileControls.instance.buttonLeft.color = 0xFFEFAF89;
+    mobileControls.instance.buttonDown.color = 0xFFEFAF89;
+    mobileControls.instance.buttonUp.color = 0xFFEFAF89;
+    mobileControls.instance.buttonRight.color = 0xFFEFAF89;
 
 	snapCamToPos(639, 359, true);
 
@@ -148,6 +155,7 @@ function onDestroy()
 function onGameOverStart()
 {
 	camGame.filters = [];
+	FlxG.camera.x -= 240;
 }
 
 function onEndSong()

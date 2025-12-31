@@ -332,7 +332,7 @@ class OverworldState extends MusicBeatState
 		if (objectToTarget != null)
 		{
 			FlxG.mouse.load(Paths.image("overworld/ui/cursor/click").bitmap, 0.325);
-			if (FlxG.mouse.justPressed)
+			if (FlxG.mouse.justReleased)
 			{
 				objectToTarget.dialogue != null ? loadDialogue(objectToTarget.dialogue) : click_to_change_maps(objectToTarget.location, map_name);
 			}
@@ -347,7 +347,7 @@ class OverworldState extends MusicBeatState
 				if (teleporter.direction != null) FlxG.mouse.load(Paths.image("overworld/ui/cursor/cursor" + teleporter.direction).bitmap, 0.325);
 				else FlxG.mouse.load(Paths.image("overworld/ui/cursor/cursorup").bitmap, 0.325);
 
-				if (FlxG.mouse.justPressed)
+				if (FlxG.mouse.justReleased)
 				{
 					click_to_change_maps(teleporter.location.toLowerCase(), map_name);
 				}

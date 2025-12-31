@@ -26,9 +26,14 @@ function onLoad()
 
 function onCreatePost()
 {
-	FlxG.scaleMode.width = 960;
-	FlxG.camera.width = 960;
-	camHUD.width = 960;
+	//FlxG.scaleMode.width = 960;
+	//FlxG.camera.width = 960;
+	//camHUD.width = 960;
+	FlxG.camera.x += 80;
+	mobileControls.instance.buttonLeft.color = 0xFFFF9DD6;
+    mobileControls.instance.buttonDown.color = 0xFFC1B3FF;
+    mobileControls.instance.buttonUp.color = 0xFFFFC6EF;
+    mobileControls.instance.buttonRight.color = 0xFFBFBFFF;
 
 	playHUD.kill();
 	playHUD = new PinkHUD(PlayState.instance);
@@ -43,8 +48,8 @@ function onCreatePost()
 	snapCamToPos(bg.x + (bg.width / 2) + (960 / 6), bg.y + (bg.height / 2) + 10, true);
 	FlxG.camera.pixelPerfectRender = true;
 
-	modManager.setValue("transformX", -75, 0);
-	modManager.setValue("transformX", 75, 1);
+	modManager.setValue("transformX", 75, 0);
+	modManager.setValue("transformX", -75, 1);
 	modManager.setValue("opponentSwap", 1);
 
 	if (isStoryMode)
@@ -129,4 +134,9 @@ function loadBlackSea()
 function onEndSong()
 {
 	if (isStoryMode) OverworldState.curCutscene = 'dream_exit';
+}
+
+function onGameOverStart()
+{
+	FlxG.camera.x -= 80;
 }

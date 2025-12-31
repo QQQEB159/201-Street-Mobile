@@ -133,7 +133,7 @@ class OptionsSubstate extends MusicBeatSubstate
 		ClientPrefs.flush();
 		camera = CameraUtil.lastCamera;
 		
-		addTouchPad("LEFT_FULL", "A_B");
+		addTouchPad("UP_DOWN", "A_B");
 		addTouchPadCamera();
 	}
 
@@ -147,7 +147,7 @@ class OptionsSubstate extends MusicBeatSubstate
 		trace('plap plap plap!');
 		super.closeSubState();
 		removeTouchPad();
-		addTouchPad("LEFT_FULL", "A_B");
+		addTouchPad("UP_DOWN", "A_B");
 		addTouchPadCamera();
 		ClientPrefs.flush();
 	}

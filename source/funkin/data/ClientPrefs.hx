@@ -24,7 +24,7 @@ class ClientPrefs
 	@saveVar public static var controlsAlpha:Float = FlxG.onMobile ? 0.6 : 0;
 	@saveVar public static var screensaver:Bool = false;
 	#if android
-	@saveVar public static var storageType:String = "EXTERNAL";
+	@saveVar public static var storageType:String = "EXTERNAL_DATA";
 	#end
 	@saveVar public static var hitboxType:String = "Gradient";
 	

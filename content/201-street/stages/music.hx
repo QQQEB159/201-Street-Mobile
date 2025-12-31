@@ -5,6 +5,33 @@ import funkin.game.huds.DHMISHUD;
 
 var curCharacterSinging:String = '';
 var frankie_y:Float;
+var void:FlxSprite;
+var void_overlay:FlxSprite;
+var bg:FlxSprite;
+var cloudsky:FlxSprite;
+var backdrop:FlxSprite;
+var clouds:FlxSprite;
+var scaryBG:FlxSprite;
+var speaker:FlxSprite;
+var oats:FlxSprite;
+var chuds:FlxSprite;
+var apple:FlxSprite;
+var kick:FlxSprite;
+var hat:FlxSprite;
+var snare:FlxSprite;
+var ending_cutscene:FunkinVideoSprite;
+var cutscene_video:FunkinVideoSprite;
+var scaryEndingSequence:Bool = false;
+var red_guy:Character;
+var duck:Character;
+var foreground_clouds:FlxSprite;
+var red_guy_ending:Character;
+var duck_ending:Character;
+var yellow_guy_ending:Character;
+var lighting = newShader('adjustColor');
+var genres:FlxSprite;
+var logo:FlxSprite;
+var fabric:FlxSprite;
 
 function onLoad()
 {
@@ -99,9 +126,6 @@ function onLoad()
 	if (isStoryMode) songEndCallback = cutscene_ending;
 }
 
-var vibe = newShader('vibe');
-var void_shader = newShader('void');
-
 function onCreatePost()
 {
 	playHUD.kill();
@@ -152,15 +176,14 @@ function onCreatePost()
 
 	camHUD.alpha = 0;
 
-	if (ClientPrefs.shaders) void.shader = void_shader;
+	//if (ClientPrefs.shaders) void.shader = void_shader;
 
-	lighting = newShader('adjustColor');
 	lighting.setFloat('hue', -5);
 	lighting.setFloat('brightness', -3);
 	lighting.setFloat('contrast', 10);
 	lighting.setFloat('saturation', -25);
 
-	if (ClientPrefs.shaders) camGame.filters = [new ShaderFilter(lighting)];
+	camGame.filters = [new ShaderFilter(lighting)];
 
 	cutscene_video = new FunkinVideoSprite();
 	cutscene_video.onFormat(() -> {
@@ -199,6 +222,8 @@ function onCreatePost()
 
 	remove(gfGroup);
 	insert(999, gfGroup);
+	
+	mobileControls.instance.buttonUp.color = 0xFFFF00;
 }
 
 function onMoveCamera(char)
@@ -366,7 +391,7 @@ function onEvent(eventName, value1, value2)
 						frankieRim.setAdjustColor(-25, -38, -25, -20);
 						frankieRim.color = 0xFFFFFF;
 						frankieRim.angle = 90;
-						if (ClientPrefs.shaders) item.shader = frankieRim;
+						item.shader = frankieRim;
 						frankieRim.attachedSprite = item;
 						item.animation.onFrameChange.add(function() {
 							frankieRim.updateFrameInfo(item.frame);
@@ -382,7 +407,7 @@ function onEvent(eventName, value1, value2)
 					speakerRim.setAdjustColor(-25, -38, -25, -20);
 					speakerRim.color = 0xFFFFFF;
 					speakerRim.angle = 90;
-					if (ClientPrefs.shaders) speaker.shader = speakerRim;
+					speaker.shader = speakerRim;
 					speakerRim.attachedSprite = speaker;
 					speaker.animation.onFrameChange.add(function() {
 						speakerRim.updateFrameInfo(speaker.frame);
@@ -395,7 +420,7 @@ function onEvent(eventName, value1, value2)
 						characterRim.setAdjustColor(-25, -38, -25, -20);
 						characterRim.color = 0x00FFFFFF;
 						characterRim.threshold = 0.3;
-						if (ClientPrefs.shaders) item.shader = characterRim;
+						item.shader = characterRim;
 						characterRim.attachedSprite = item;
 						item.animation.onFrameChange.add(function() {
 							characterRim.updateFrameInfo(item.frame);
@@ -473,7 +498,7 @@ function onEvent(eventName, value1, value2)
 					scaryEndingSequence = false;
 					for (item in [boyfriend, duck, red_guy, yellow_guy_ending, duck_ending, red_guy_ending])
 						item.visible = !item.visible;
-					if (ClientPrefs.shaders) camGame.filters = [new ShaderFilter(lighting)];
+					camGame.filters = [new ShaderFilter(lighting)];
 					onEvent("DHMIS Events", "normal", "");
 					scaryBG.visible = false;
 					gf.visible = false;
@@ -512,7 +537,7 @@ var totalElapsed:Float = 0;
 function onUpdate(elapsed)
 {
 	totalElapsed += elapsed;
-	void_shader.setFloat('iTime', totalElapsed);
+	//void_shader.setFloat('iTime', totalElapsed);
 
 	speaker.y = frankie_y + speaker.height + 270;
 }

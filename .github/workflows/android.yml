@@ -36,6 +36,7 @@ jobs:
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/HomuHomu833-haxe-stuff/hxcpp
           haxelib git lime https://github.com/HomuHomu833-haxe-stuff/lime
+          haxelib git hxvlc https://github.com/MAJigsaw77/hxvlc
           haxelib list
       
       - name: Setup Lime

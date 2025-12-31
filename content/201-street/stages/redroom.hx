@@ -23,6 +23,11 @@ function onCreatePost()
 	playHUD.healthBarFG.loadGraphic(Paths.image('ui/global/healthbarFG_evil'));
 
 	game.snapCamToPos(1100, 625, true);
+	
+	mobileControls.instance.buttonLeft.color = 0xFFA71431;
+    mobileControls.instance.buttonDown.color = 0xFF414141;
+    mobileControls.instance.buttonUp.color = 0xFFF26B65;
+    mobileControls.instance.buttonRight.color = 0xFFFFFFFF;
 }
 
 function onEvent(eventName, value1, value2)

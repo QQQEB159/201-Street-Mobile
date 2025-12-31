@@ -431,6 +431,11 @@ function onCreatePost()
 	black.cameras = [game.camOther];
 	black.alpha = 1;
 	add(black);
+	
+	mobileControls.instance.buttonLeft.color = 0xFFDA90E7;
+    mobileControls.instance.buttonDown.color = 0xFF9090E8;
+    mobileControls.instance.buttonUp.color = 0xFF60D0B8;
+    mobileControls.instance.buttonRight.color = 0xFFD99031;
 }
 
 function goodNoteHit()

@@ -135,7 +135,7 @@ function onCreatePost()
 		chromaticWarp.setFloat('distortion', 0.1);
 		grain.setFloat("multiplier", 0.0);
 
-		dad.shader = bloom2;
+		//dad.shader = bloom2;
 		camGame.filters = [new ShaderFilter(chromaticWarp)];
 		FlxG.game.setFilters([new ShaderFilter(grain), new ShaderFilter(chromaticWarp)]);
 	}
