@@ -8,6 +8,7 @@ function onLoad()
 function onCreatePost()
 {
 	FlxG.mouse.visible = false;
+	touchPad.visible = false;
 	new FlxTimer().start(1.21, function(tmr:FlxTimer) {
 		FlxTween.cancelTweensOf(FlxG.sound.music);
 		FlxG.sound.music.volume = 0;

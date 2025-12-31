@@ -50,6 +50,7 @@ class CreditsState extends MusicBeatState
 			creditsImage.visible = true;
 			inVideo = false;
 			FlxG.sound.music.resume();
+			touchPad.visible = true;
 		});
 		video.load(Paths.video('credits'));
 		add(video);
@@ -82,6 +83,7 @@ class CreditsState extends MusicBeatState
 				uiImage.visible = false;
 				creditsImage.visible = false;
 				FlxG.sound.music.pause();
+				touchPad.visible = false;
 				video.play();
 			}
 		}
